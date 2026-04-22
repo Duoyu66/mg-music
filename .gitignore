@@ -1,3 +1,36 @@
-# 开发用：复制并改过 Info.plist 的 Electron 分发包（体积分支较大）
-dev-electron-dist/
+# 依赖
 node_modules/
+
+# 从 node_modules 拷出的本机 Electron 分发包（体积分支较大，仅开发用）
+dev-electron-dist/
+
+# electron-vite 构建输出（main / preload / renderer）
+out/
+
+# electron-builder 打出来的安装包与中间产物（DMG/EXE/NSIS/zip 等，体积大）
+# 配置见 package.json → build.directories.output
+release/
+
+# 若使用其它工具输出到 dist/，一并忽略（勿与 tracked 的 build/ 图标目录混淆）
+dist/
+
+# 日志与缓存
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+*.tsbuildinfo
+.cache
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# 环境变量（若使用）
+.env
+.env.*.local
