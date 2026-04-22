@@ -13,7 +13,7 @@ release/
 
 # 若使用其它工具输出到 dist/，一并忽略（勿与 tracked 的 build/ 图标目录混淆）
 dist/
-
+.pnpm-store/
 # 日志与缓存
 *.log
 npm-debug.log*
