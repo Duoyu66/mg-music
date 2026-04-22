@@ -1,0 +1,3 @@
+# 开发用：复制并改过 Info.plist 的 Electron 分发包（体积分支较大）
+dev-electron-dist/
+node_modules/

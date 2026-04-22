@@ -1,0 +1,85 @@
+{
+  "name": "muguamusic",
+  "version": "1.0.0",
+  "description": "木瓜音乐 - 跨平台本地音乐播放器",
+  "main": "out/main/index.js",
+  "type": "module",
+  "packageManager": "pnpm@10.30.2",
+  "author": "木瓜音乐",
+  "license": "MIT",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "electron-builder",
+      "esbuild",
+      "electron-winstaller"
+    ]
+  },
+  "scripts": {
+    "dev": "node ./scripts/dev.mjs",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "pack": "pnpm run build && pnpm exec electron-builder --dir",
+    "dist": "pnpm run build && pnpm exec electron-builder",
+    "dist:win": "pnpm run build && pnpm exec electron-builder --win",
+    "dist:win-msi": "pnpm run build && pnpm exec electron-builder --win msi",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "icons": "electron-icon-builder --input=./build/icon.png --output=./build"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "axios": "^1.15.1",
+    "electron-store": "^11.0.2",
+    "electron-updater": "^6.8.3",
+    "element-plus": "^2.13.7",
+    "music-metadata": "^11.12.3",
+    "pinia": "^3.0.4",
+    "sortablejs": "^1.15.7",
+    "vue": "^3.5.32"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/sortablejs": "^1.15.9",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "electron": "^41.2.1",
+    "electron-builder": "^26.8.1",
+    "electron-icon-builder": "^2.0.1",
+    "electron-vite": "^5.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.2",
+    "vue-tsc": "^3.2.7"
+  },
+  "build": {
+    "appId": "com.muguamusic.app",
+    "productName": "木瓜音乐",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "icon": "build/icon.png",
+    "mac": {
+      "category": "public.app-category.music",
+      "target": ["dmg", "zip"],
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false,
+      "shortcutName": "木瓜音乐"
+    }
+  }
+}
